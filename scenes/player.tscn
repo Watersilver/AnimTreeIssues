@@ -1718,7 +1718,7 @@ states/run/position = Vector2(555, 100)
 states/run_turn/node = SubResource("AnimationNodeStateMachine_2mu34")
 states/run_turn/position = Vector2(450, -13)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_x1fr7"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_gr4hv"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_s5a10"), "run", "run_turn", SubResource("AnimationNodeStateMachineTransition_237nx"), "run_turn", "idle", SubResource("AnimationNodeStateMachineTransition_3rgf4"), "idle", "run_turn", SubResource("AnimationNodeStateMachineTransition_qy3u7"), "run_turn", "run", SubResource("AnimationNodeStateMachineTransition_viju2"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_m06v3"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_rrgbg"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_fouuy"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_2ub4i"), "run_turn", "jump", SubResource("AnimationNodeStateMachineTransition_l0fgg")]
-graph_offset = Vector2(-118, -25)
+graph_offset = Vector2(-37, -114)
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 scale = Vector2(2, 2)
