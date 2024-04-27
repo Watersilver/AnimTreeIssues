@@ -1,0 +1,200 @@
+[gd_scene load_steps=19 format=3 uid="uid://bcnnbnmwvfwhm"]
+
+[ext_resource type="Texture2D" uid="uid://crm6gbt8lbaoo" path="res://icon.svg" id="1_63rbn"]
+[ext_resource type="Script" path="res://AnimationTree.gd" id="2_qvcbj"]
+
+[sub_resource type="Animation" id="Animation_fr466"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(87, 90)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6fpw4"]
+resource_name = "state1"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(87, 90)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533]
+}
+
+[sub_resource type="Animation" id="Animation_yk746"]
+resource_name = "state2"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(116, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2oqme"]
+resource_name = "transitional"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(285, 164)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a08f0"]
+_data = {
+"RESET": SubResource("Animation_fr466"),
+"state1": SubResource("Animation_6fpw4"),
+"state2": SubResource("Animation_yk746"),
+"transitional": SubResource("Animation_2oqme")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yvo58"]
+animation = &"state1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cmlqp"]
+animation = &"state2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1qock"]
+animation = &"transitional"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_02wvt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6rlfk"]
+advance_mode = 2
+advance_expression = "to_state_1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3jy4k"]
+advance_mode = 2
+advance_expression = "to_state_2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4kua7"]
+advance_mode = 2
+advance_expression = "to_transitional"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oih4h"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0lppw"]
+advance_mode = 2
+advance_expression = "to_state_1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tpix6"]
+advance_mode = 2
+advance_expression = "to_transitional"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3m2ao"]
+states/End/position = Vector2(1246, 100)
+states/Start/position = Vector2(298, 100)
+states/state1/node = SubResource("AnimationNodeAnimation_yvo58")
+states/state1/position = Vector2(454, 100)
+states/state2/node = SubResource("AnimationNodeAnimation_cmlqp")
+states/state2/position = Vector2(1102, 100)
+states/transitional/node = SubResource("AnimationNodeAnimation_1qock")
+states/transitional/position = Vector2(772, -132)
+transitions = ["Start", "state1", SubResource("AnimationNodeStateMachineTransition_02wvt"), "state2", "state1", SubResource("AnimationNodeStateMachineTransition_6rlfk"), "state1", "state2", SubResource("AnimationNodeStateMachineTransition_3jy4k"), "state1", "transitional", SubResource("AnimationNodeStateMachineTransition_4kua7"), "transitional", "state2", SubResource("AnimationNodeStateMachineTransition_oih4h"), "transitional", "state1", SubResource("AnimationNodeStateMachineTransition_0lppw"), "state2", "transitional", SubResource("AnimationNodeStateMachineTransition_tpix6")]
+graph_offset = Vector2(95, -171)
+
+[node name="expected" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(87, 90)
+texture = ExtResource("1_63rbn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a08f0")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_3m2ao")
+anim_player = NodePath("../AnimationPlayer")
+script = ExtResource("2_qvcbj")
