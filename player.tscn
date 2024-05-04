@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://mqw5is1cdald"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_bmux4"]
+[ext_resource type="Texture2D" uid="uid://2eiyu8ssllyd" path="res://icon.svg" id="1_oqh20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ux16i"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ns2va"]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+position = Vector2(10, 10)
+motion_mode = 1
+script = ExtResource("1_bmux4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ux16i")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0.788235, 0, 1)
+z_as_relative = false
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_ns2va")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+position = Vector2(-2.98023e-07, 2.38419e-07)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("1_oqh20")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.4, 0.4)
+
+[node name="Label" type="Label" parent="Node2D"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0

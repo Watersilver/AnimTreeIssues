@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7iij10f15ugq"]
+
+[ext_resource type="PackedScene" uid="uid://b2o8s0ql4cc6n" path="res://block.tscn" id="1_4f8u1"]
+[ext_resource type="PackedScene" uid="uid://mqw5is1cdald" path="res://player.tscn" id="1_txru4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="block1" parent="." instance=ExtResource("1_4f8u1")]
+position = Vector2(80, 100)
+
+[node name="block2" parent="." instance=ExtResource("1_4f8u1")]
+position = Vector2(40, 20)
+
+[node name="block3" parent="." instance=ExtResource("1_4f8u1")]
+position = Vector2(100, 40)
+
+[node name="block4" parent="." instance=ExtResource("1_4f8u1")]
+position = Vector2(20, 80)
+
+[node name="player1" parent="." instance=ExtResource("1_txru4")]
+position = Vector2(70, 70)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(144, 81)
+zoom = Vector2(4, 4)
+
+[node name="block5" parent="." instance=ExtResource("1_4f8u1")]
+position = Vector2(248, 80)
+
+[node name="block6" parent="." instance=ExtResource("1_4f8u1")]
+position = Vector2(168, 40)
+
+[node name="block7" parent="." instance=ExtResource("1_4f8u1")]
+position = Vector2(228, 20)
+
+[node name="block8" parent="." instance=ExtResource("1_4f8u1")]
+position = Vector2(188, 100)
+
+[node name="player2" parent="." instance=ExtResource("1_txru4")]
+position = Vector2(218, 70)
+
+[node name="CenterButton" type="Button" parent="."]
+offset_top = 131.0
+offset_right = 60.0
+offset_bottom = 162.0
+focus_mode = 0
+text = "Reset"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+offset_left = 165.0
+offset_top = 131.0
+offset_right = 288.0
+offset_bottom = 162.0
+focus_mode = 0
+item_count = 2
+selected = 0
+popup/item_0/text = "Floating"
+popup/item_0/id = 0
+popup/item_1/text = "Grounded"
+popup/item_1/id = 1
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 72.0
+offset_right = 216.0
+offset_bottom = 31.0
+focus_mode = 0
+text = "workaround"
+
+[connection signal="pressed" from="CenterButton" to="player1" method="_on_center_pressed"]
+[connection signal="pressed" from="CenterButton" to="player2" method="_on_center_pressed"]
+[connection signal="item_selected" from="OptionButton" to="player1" method="_on_mode_selected"]
+[connection signal="item_selected" from="OptionButton" to="player2" method="_on_mode_selected"]
+[connection signal="toggled" from="CheckButton" to="player1" method="_on_fix_toggled"]
+[connection signal="toggled" from="CheckButton" to="player2" method="_on_fix_toggled"]

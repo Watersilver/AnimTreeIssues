@@ -1,3 +1,1 @@
-two projects to showcase animation problem
-
-one containing animation problem and one working as expected
+Shocase for the move_and_slide corner collision issue, as well as workaround
